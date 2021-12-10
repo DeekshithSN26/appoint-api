@@ -27,7 +27,7 @@ pipeline{
                         
                           sh '''
                           sed -i "s,IMAGENAME,deekshithsn/userapi:${VERSION},g" user-api.yaml
-                          kubectl apply -f userui.yaml
+                          kubectl apply -f user-api.yaml
                           ''' 
                         
                     }
