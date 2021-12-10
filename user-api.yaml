@@ -1,0 +1,38 @@
+  apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: "user-api"
+    name: "userapi"
+  spec:
+    type: NodePort
+    ports:
+    - name: "http"
+      port: 5000
+      targetPort: 5000
+      nodePort: 30002
+    selector:
+      app: "user-api" 
+---  
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: "user-api"
+    labels: 
+      app: user-api
+  spec:
+    replicas: 1
+    selector:
+        matchLabels:
+          app: "user-api"
+    template:
+      metadata:
+        labels:
+          app: user-api
+      spec:
+        containers:
+          - name: "user-api"
+            image: "deekshithsn/userapi"
+            imagePullPolicy: "IfNotPresent"
+            ports:
+              - containerPort: 5000
