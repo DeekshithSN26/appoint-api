@@ -32,7 +32,7 @@
       spec:
         containers:
           - name: "user-api"
-            image: "deekshithsn/userapi"
+            image: "IMAGENAME"
             imagePullPolicy: "IfNotPresent"
             ports:
               - containerPort: 5000
